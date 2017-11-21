@@ -1,4 +1,8 @@
-package learn.prospring5.ch02;
+package learn.prospring5.ch02.beans.impl;
+
+
+import learn.prospring5.ch02.beans.dec.MessageProvider;
+import learn.prospring5.ch02.beans.dec.MessageRenderer;
 
 public class StandardOutMessageRenderer implements MessageRenderer {
     private MessageProvider messageProvider;
