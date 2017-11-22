@@ -1,0 +1,5 @@
+package learn.prospring5.ch03.ioc.dl.cdl.dec;
+
+public interface Container {
+    Object getDependency(String key);
+}
