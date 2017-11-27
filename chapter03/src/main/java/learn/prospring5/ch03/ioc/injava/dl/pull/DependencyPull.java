@@ -1,4 +1,4 @@
-package learn.prospring5.ch03.ioc.dl.pull;
+package learn.prospring5.ch03.ioc.injava.dl.pull;
 
 import learn.prospring5.ch02.beans.dec.MessageRenderer;
 import org.springframework.context.ApplicationContext;

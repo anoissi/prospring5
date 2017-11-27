@@ -1,7 +1,7 @@
-package learn.prospring5.ch03.ioc.dl.cdl.impl;
+package learn.prospring5.ch03.ioc.injava.dl.cdl.impl;
 
-import learn.prospring5.ch03.ioc.dl.cdl.dec.Container;
-import learn.prospring5.ch03.ioc.dl.cdl.dec.ManagedComponent;
+import learn.prospring5.ch03.ioc.injava.dl.cdl.dec.Container;
+import learn.prospring5.ch03.ioc.injava.dl.cdl.dec.ManagedComponent;
 
 public class ContextualizedDependencyLookup implements ManagedComponent {
     private Dependency dependency;

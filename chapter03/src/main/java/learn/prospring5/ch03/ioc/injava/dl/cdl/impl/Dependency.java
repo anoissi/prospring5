@@ -1,4 +1,4 @@
-package learn.prospring5.ch03.ioc.dl.cdl.impl;
+package learn.prospring5.ch03.ioc.injava.dl.cdl.impl;
 
 public class Dependency {
     @Override
