@@ -1,7 +1,7 @@
-package learn.prospring5.ch03.declaring.spring.components.annotation.maintest;
+package learn.prospring5.ch03.declaring.spring.components.intro.annotation.maintest;
 
 
-import learn.prospring5.ch03.declaring.spring.components.annotation.beans.dec.MessageRenderer;
+import learn.prospring5.ch03.declaring.spring.components.intro.annotation.beans.dec.MessageRenderer;
 import org.springframework.context.support.GenericXmlApplicationContext;
 
 public class TestSpringAnnotation {

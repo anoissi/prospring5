@@ -1,4 +1,4 @@
-package learn.prospring5.ch03.declaring.spring.components.annotation.beans.dec;
+package learn.prospring5.ch03.declaring.spring.components.intro.annot.dec;
 
 
 public interface MessageRenderer {

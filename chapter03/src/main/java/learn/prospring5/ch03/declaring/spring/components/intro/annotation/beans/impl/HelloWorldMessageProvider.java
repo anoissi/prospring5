@@ -1,6 +1,6 @@
-package learn.prospring5.ch03.declaring.spring.components.annot.impl;
+package learn.prospring5.ch03.declaring.spring.components.intro.annotation.beans.impl;
 
-import learn.prospring5.ch03.declaring.spring.components.annot.dec.MessageProvider;
+import learn.prospring5.ch02.beans.dec.MessageProvider;
 import org.springframework.stereotype.Component;
 
 @Component("provider")

@@ -1,6 +1,7 @@
-package learn.prospring5.ch03.declaring.spring.components.annot.impl;
+package learn.prospring5.ch03.declaring.spring.components.intro.annot.impl;
 
-import learn.prospring5.ch03.declaring.spring.components.annot.dec.*;
+import learn.prospring5.ch03.declaring.spring.components.intro.annot.dec.MessageProvider;
+import learn.prospring5.ch03.declaring.spring.components.intro.annot.dec.MessageRenderer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

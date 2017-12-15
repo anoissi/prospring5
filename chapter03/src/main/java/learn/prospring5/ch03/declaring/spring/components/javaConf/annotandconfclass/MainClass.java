@@ -1,6 +1,6 @@
 package learn.prospring5.ch03.declaring.spring.components.javaConf.annotandconfclass;
 
-import learn.prospring5.ch03.declaring.spring.components.annot.dec.MessageRenderer;
+import learn.prospring5.ch03.declaring.spring.components.intro.annot.dec.MessageRenderer;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 

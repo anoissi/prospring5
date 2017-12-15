@@ -1,10 +1,9 @@
-package learn.prospring5.ch03.declaring.spring.components.annotation.beans.impl;
+package learn.prospring5.ch03.declaring.spring.components.intro.annotation.beans.impl;
 
 
 import learn.prospring5.ch02.beans.dec.MessageProvider;
 import learn.prospring5.ch02.beans.dec.MessageRenderer;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 @Service("renderer")
