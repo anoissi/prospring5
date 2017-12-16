@@ -1,4 +1,4 @@
-package learn.prospring5.ch03.ioc.di.cons;
+package learn.prospring5.ch03.ioc.injava.di.cons;
 
 import learn.prospring5.ch03.ioc.injava.dl.cdl.impl.Dependency;
 
