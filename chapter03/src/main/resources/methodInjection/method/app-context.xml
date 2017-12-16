@@ -1,0 +1,15 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <bean id="singer" class="learn.prospring5.ch03.using.method.injection.method.Singer"
+          scope="prototype"/>
+    <bean id="abstractLookupBean"
+          class="learn.prospring5.ch03.using.method.injection.method.AbstractLookupDemoBean">
+        <lookup-method name="getMySinger" bean="singer"/>
+    </bean>
+    <bean id="standardLookupBean"
+          class="learn.prospring5.ch03.using.method.injection.method.StandardLookupDemoBean">
+        <property name="mySinger" ref="singer"/>
+    </bean>
+</beans>
