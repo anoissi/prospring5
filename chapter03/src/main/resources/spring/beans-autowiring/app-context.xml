@@ -1,0 +1,13 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <bean id="fooOne" class="learn.prospring5.ch03.autowiring.your.bean.Foo"/>
+    <bean id="barOne" class="learn.prospring5.ch03.autowiring.your.bean.Bar"/>
+    <bean id="targetByName" autowire="byName"
+          class="learn.prospring5.ch03.autowiring.your.bean.Target" lazy-init="true"/>
+    <bean id="targetByType" autowire="byType"
+          class="learn.prospring5.ch03.autowiring.your.bean.Target" lazy-init="true"/>
+    <bean id="targetConstructor" autowire="constructor"
+          class="learn.prospring5.ch03.autowiring.your.bean.Target" lazy-init="true"/>
+</beans>
