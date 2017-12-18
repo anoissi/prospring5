@@ -13,6 +13,7 @@ public class Singer {
     public void setAge(int age) {
         this.age = age;
     }
+
     public void init() {
         System.out.println("Initializing bean");
         if (name == null) {
