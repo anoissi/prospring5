@@ -1,4 +1,4 @@
-package learn.prospring5.ch04.hooking.into.bean.destruction.usingAtBean;
+package learn.prospring5.ch04.hooking.into.bean.destruction.usingAtBeanAndshutDwobHook;
 
 import java.io.File;
 public class DestructiveBeanWithJSR250 {

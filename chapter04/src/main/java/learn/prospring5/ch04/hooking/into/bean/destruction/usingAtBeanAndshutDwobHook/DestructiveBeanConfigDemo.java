@@ -1,4 +1,4 @@
-package learn.prospring5.ch04.hooking.into.bean.destruction.usingAtBean;
+package learn.prospring5.ch04.hooking.into.bean.destruction.usingAtBeanAndshutDwobHook;
 
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.Bean;
@@ -24,7 +24,8 @@ public class DestructiveBeanConfigDemo {
                 new AnnotationConfigApplicationContext(DestructiveBeanConfig.class);
         ctx.getBean(DestructiveBeanWithJSR250.class);
         System.out.println("Calling destroy()");
-        ctx.destroy();
+        //ctx.destroy();
+        ctx.registerShutdownHook();
         System.out.println("Called destroy()");
     }
 }
