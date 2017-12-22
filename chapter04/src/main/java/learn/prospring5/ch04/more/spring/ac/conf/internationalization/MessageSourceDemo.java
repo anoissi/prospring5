@@ -5,7 +5,7 @@ import org.springframework.context.support.GenericXmlApplicationContext;
 public class MessageSourceDemo  {
     public static void main(String... args) {
         GenericXmlApplicationContext ctx = new GenericXmlApplicationContext();
-        ctx.load("classpath:moreSpringConf/internationalization/app-intern.xml");
+        ctx.load("classpath:moreSpringConf/app-intern.xml");
         ctx.refresh();
         Locale english = Locale.ENGLISH;
         Locale german = new Locale("de", "DE");
