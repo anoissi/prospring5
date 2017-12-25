@@ -1,21 +1,33 @@
 package learn.prospring5.ch06.sample.data.model.dao;
 
+import learn.prospring5.ch06.sample.data.model.entities.Singer;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import org.apache.commons.lang3.NotImplementedException;
+
+
+import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
+
 public class PlainSingerDao implements SingerDao {
-    private static Logger logger =
-            LoggerFactory.getLogger(PlainSingerDao.class);
+
+    private static Logger logger = LoggerFactory.getLogger(PlainSingerDao.class);
 
     static {
         try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
+            Class.forName("org.postgresql.Driver");
         } catch (ClassNotFoundException ex) {
-            logger.error("Prblem  loadng DB dDiver!", ex);
+            logger.error("Prblem loadng DB dDiver!", ex);
         }
     }
 
     private Connection getConnection() throws SQLException {
         return DriverManager.getConnection(
-                "jdbc:mysql://localhost:3306/musicdb?useSSL=true",
-                "prospring5", "prospring5");
+                "jdbc:postgresql://localhost:5432/musicdb?useSSL=true",
+                "postgres", "123456");
     }
 
     private void closeConnection(Connection connection) {
@@ -25,10 +37,11 @@ public class PlainSingerDao implements SingerDao {
         try {
             connection.close();
         } catch (SQLException ex) {
-            logger.error("Problem  closing  connection to the database!", ex);
+            logger.error("Problem closing connection to the database!",ex);
         }
     }
 
+    @Override
     public List<Singer> findAll() {
         List<Singer> result = new ArrayList<>();
         Connection connection = null;
@@ -47,7 +60,7 @@ public class PlainSingerDao implements SingerDao {
             }
             statement.close();
         } catch (SQLException ex) {
-            logger.error("Problem when executing SELECT!", ex);
+            logger.error("Problem when executing SELECT!",ex);
         } finally {
             closeConnection(connection);
         }
@@ -60,8 +73,7 @@ public class PlainSingerDao implements SingerDao {
         try {
             connection = getConnection();
             PreparedStatement statement = connection.prepareStatement(
-                    "insert into Singer (first_name,  last_name, birth_date)
-                    values( ?, ?, ?)"
+                    "insert into Singer (first_name, last_name, birth_date) values (?, ?, ?)"
                     , Statement.RETURN_GENERATED_KEYS);
             statement.setString(1, singer.getFirstName());
             statement.setString(2, singer.getLastName());
@@ -71,9 +83,8 @@ public class PlainSingerDao implements SingerDao {
             if (generatedKeys.next()) {
                 singer.setId(generatedKeys.getLong(1));
             }
-            statement.close();
         } catch (SQLException ex) {
-            logger.error("Prblem  executing INSERT", ex);
+            logger.error("Prblem executing INSERT", ex);
         } finally {
             closeConnection(connection);
         }
@@ -84,15 +95,55 @@ public class PlainSingerDao implements SingerDao {
         Connection connection = null;
         try {
             connection = getConnection();
-            PreparedStatement statement = connection.prepareStatement
-                    ("delete from singer where id=?");
+            PreparedStatement statement = connection.prepareStatement("delete from singer where id=?");
             statement.setLong(1, singerId);
             statement.execute();
-            statement.close();
         } catch (SQLException ex) {
             logger.error("Prblem executing DELETE", ex);
         } finally {
             closeConnection(connection);
         }
+    }
+
+    @Override
+    public List<Singer> findAllWithDetail() {
+        return null;
+    }
+
+    @Override
+    public void insertWithDetail(Singer singer) {
+
+    }
+
+    @Override
+    public List<Singer> findByFirstName(String firstName) {
+        throw new NotImplementedException("findByFirstName");
+    }
+
+    @Override
+    public String findFirstNameById(Long id) {
+        throw new NotImplementedException("findFirstNameById");
+    }
+
+    @Override
+    public String findLastNameById(Long id) {
+        throw new NotImplementedException("findLastNameById");
+    }
+
+    @Override
+    public void update(Singer singer) {
+        throw new NotImplementedException("update");
+    }
+
+    @Override public List<Singer> findAllWithAlbums() {
+        throw new NotImplementedException("findAllWithAlbums");
+    }
+
+    @Override public void insertWithAlbum(Singer singer) {
+        throw new NotImplementedException("insertWithAlbum");
+    }
+
+    @Override public String findNameById(Long id) {
+        throw new NotImplementedException("findNameById");
     }
 }
