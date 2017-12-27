@@ -1,6 +1,7 @@
 package learn.prospring5.ch06.spring.dao.impl;
 
 import learn.prospring5.ch06.spring.dao.def.SingerDao;
+import org.springframework.beans.factory.BeanCreationException;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.jdbc.core.JdbcTemplate;
 
@@ -18,6 +19,9 @@ public class JdbcSingerDao implements SingerDao, InitializingBean {
 
     @Override
     public void afterPropertiesSet() throws Exception {
-
+        if (jdbcTemplate ==  null) {
+            throw new BeanCreationException
+                    ("Null JdbcTemplate on  SingerDao");
+        }
     }
 }
