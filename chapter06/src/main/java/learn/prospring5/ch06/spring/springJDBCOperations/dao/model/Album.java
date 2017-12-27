@@ -1,6 +1,6 @@
 package learn.prospring5.ch06.spring.springJDBCOperations.dao.model;
 
-import java.sql.Date;
+import java.util.Date;
 
 public class Album {
     private Long id;

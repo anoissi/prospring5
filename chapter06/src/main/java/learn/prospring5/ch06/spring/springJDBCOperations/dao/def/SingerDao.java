@@ -16,5 +16,7 @@ public interface SingerDao {
     void update(Singer singer);
     void delete(Long singerId);
     void insertWithAlbum(Singer singer);
+
+    void cleanUpDatabaseForTest();
 }
 
