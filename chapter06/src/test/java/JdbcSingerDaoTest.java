@@ -15,7 +15,7 @@ import java.util.List;
 import static junit.framework.TestCase.assertNotNull;
 import static junit.framework.TestCase.assertTrue;
 
-public class MappingSqlQueryJdbcSingerDaoTest {
+public class JdbcSingerDaoTest {
     private GenericApplicationContext ctx;
     private SingerDao singerDao;
 

@@ -15,8 +15,8 @@ import java.util.List;
 import java.util.Map;
 
 @Repository("mappingSqlQueryJdbcSingerDao")
-public class MappingSqlQueryJdbcSingerDao implements SingerDao {
-    private static final Logger logger = LoggerFactory.getLogger(MappingSqlQueryJdbcSingerDao.class);
+public class JdbcSingerDao implements SingerDao {
+    private static final Logger logger = LoggerFactory.getLogger(JdbcSingerDao.class);
     private DataSource dataSource;
     private SelectAllSingers selectAllSingers;
     private SqlUpdateUpdateSinger sqlUpdateUpdateSinger;
