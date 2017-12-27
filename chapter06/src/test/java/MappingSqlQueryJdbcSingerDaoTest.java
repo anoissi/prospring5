@@ -8,6 +8,8 @@ import org.junit.Test;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.GenericApplicationContext;
 
+import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.List;
 
 import static junit.framework.TestCase.assertNotNull;
@@ -38,6 +40,25 @@ public class MappingSqlQueryJdbcSingerDaoTest {
             }
         });
         ctx.close();
+    }
+
+    @Test
+    public void testSingerUpdate() {
+        Singer singer = new Singer();
+        singer.setId(1L);
+        singer.setFirstName("John Clayton");
+        singer.setLastName("Mayer");
+        singer.setBirthDate(new Date((new GregorianCalendar(1977, 9, 16)).getTime().getTime()));
+        singerDao.update(singer);
+        List<Singer> singers =  singerDao.findAll();
+        singers.forEach(singer1 -> {
+            System.out.println(singer);
+            if (singer.getAlbums() != null) {
+                for (Album album : singer.getAlbums()) {
+                    System.out.println("\t--> " +  album);
+                }
+            }
+        });
     }
 
     @After

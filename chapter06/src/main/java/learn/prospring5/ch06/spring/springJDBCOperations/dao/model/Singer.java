@@ -1,7 +1,7 @@
 package learn.prospring5.ch06.spring.springJDBCOperations.dao.model;
 
 import java.io.Serializable;
-import java.sql.Date;
+import java.util.Date;
 import java.util.ArrayList;
 import java.util.List;
 
