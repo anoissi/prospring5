@@ -1,11 +1,14 @@
 package learn.prospring5.ch06.spring.springJDBCOperations.dao.impl;
 
 import learn.prospring5.ch06.spring.springJDBCOperations.dao.def.SingerDao;
+import learn.prospring5.ch06.spring.springJDBCOperations.dao.impl.queries.InsertSinger;
 import learn.prospring5.ch06.spring.springJDBCOperations.dao.impl.queries.SelectAllSingers;
 import learn.prospring5.ch06.spring.springJDBCOperations.dao.impl.queries.SqlUpdateUpdateSinger;
 import learn.prospring5.ch06.spring.springJDBCOperations.dao.model.Singer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.jdbc.support.GeneratedKeyHolder;
+import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Repository;
 
 import javax.annotation.Resource;
@@ -20,12 +23,14 @@ public class JdbcSingerDao implements SingerDao {
     private DataSource dataSource;
     private SelectAllSingers selectAllSingers;
     private SqlUpdateUpdateSinger sqlUpdateUpdateSinger;
+    private InsertSinger insertSinger;
 
     @Resource(name = "dataSource")
     public void setDataSource(DataSource dataSource) {
         this.dataSource = dataSource;
         this.selectAllSingers = new SelectAllSingers(dataSource);
         this.sqlUpdateUpdateSinger = new SqlUpdateUpdateSinger(dataSource);
+        this.insertSinger = new InsertSinger(dataSource);
     }
 
     public DataSource getDataSource() {
@@ -64,7 +69,14 @@ public class JdbcSingerDao implements SingerDao {
 
     @Override
     public void insert(Singer singer) {
-
+        Map<String, Object> paramMap = new HashMap<>();
+        paramMap.put("first_name", singer.getFirstName());
+        paramMap.put("last_name", singer.getLastName());
+        paramMap.put("birth_date", singer.getBirthDate());
+        KeyHolder keyHolder = new GeneratedKeyHolder();
+        insertSinger.updateByNamedParam(paramMap, keyHolder);
+        singer.setId(keyHolder.getKey().longValue());
+        logger.info("New singer inserted with id: " + singer.getId());
     }
 
     @Override
