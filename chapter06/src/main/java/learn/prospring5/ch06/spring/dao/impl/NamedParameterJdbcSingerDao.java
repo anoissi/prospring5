@@ -1,11 +1,13 @@
 package learn.prospring5.ch06.spring.dao.impl;
 
 import learn.prospring5.ch06.spring.dao.def.SingerDao;
+import learn.prospring5.ch06.spring.dao.model.Singer;
 import org.springframework.beans.factory.BeanCreationException;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class NamedParameterJdbcSingerDao implements SingerDao, InitializingBean {
@@ -18,6 +20,12 @@ public class NamedParameterJdbcSingerDao implements SingerDao, InitializingBean 
         return namedParameterJdbcTemplate.queryForObject(sql,
                 namedParameters, String.class);
     }
+
+    @Override
+    public List<Singer> findAll() {
+        return null;
+    }
+
     public void setNamedParameterJdbcTemplate
             (NamedParameterJdbcTemplate namedParameterJdbcTemplate) {
         this.namedParameterJdbcTemplate = namedParameterJdbcTemplate;
