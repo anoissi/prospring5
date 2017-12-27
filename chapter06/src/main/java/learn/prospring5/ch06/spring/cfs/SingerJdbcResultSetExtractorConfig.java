@@ -1,22 +1,22 @@
-package learn.prospring5.ch06.spring.embeddedDatabase;
+package learn.prospring5.ch06.spring.cfs;
 
 import learn.prospring5.ch06.spring.dao.def.SingerDao;
-
+import learn.prospring5.ch06.spring.dao.impl.ResultSetExtractorJdbcSingerDao;
 import learn.prospring5.ch06.spring.dao.impl.RowMapperJdbcSingerDao;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
-import  org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
-import  org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
+import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
+import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
+
 import javax.sql.DataSource;
 
-
 @Configuration
-public class EmbeddedJdbcConfig {
+public class SingerJdbcResultSetExtractorConfig {
     private static Logger logger =
-            LoggerFactory.getLogger(EmbeddedJdbcConfig.class);
+            LoggerFactory.getLogger(learn.prospring5.ch06.spring.embeddedDatabase.EmbeddedJdbcConfig.class);
     @Bean
     public DataSource dataSource()  {
         try {
@@ -32,13 +32,13 @@ public class EmbeddedJdbcConfig {
     }
 
     @Bean
-     public NamedParameterJdbcTemplate namedParameterJdbcTemplate(){
+    public NamedParameterJdbcTemplate namedParameterJdbcTemplate(){
         NamedParameterJdbcTemplate namedParameterJdbcTemplate = new NamedParameterJdbcTemplate(dataSource());
         return namedParameterJdbcTemplate;
     }
     @Bean
     public SingerDao singerDao() {
-        RowMapperJdbcSingerDao dao = new RowMapperJdbcSingerDao();
+        ResultSetExtractorJdbcSingerDao dao = new ResultSetExtractorJdbcSingerDao();
         dao.setNamedParameterJdbcTemplate(namedParameterJdbcTemplate());
         return dao;
     }

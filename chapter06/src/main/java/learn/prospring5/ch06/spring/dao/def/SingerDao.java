@@ -8,4 +8,6 @@ public interface SingerDao {
     String findNameById(Long id);
 
     List<Singer> findAll();
+
+    List<Singer> findAllWithAlbums();
 }

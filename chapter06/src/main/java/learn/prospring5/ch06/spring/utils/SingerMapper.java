@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public final class SingerMapper implements RowMapper<Singer> {
+
     @Override
     public Singer mapRow(ResultSet rs, int rowNum) throws SQLException {
         Singer singer = new Singer();

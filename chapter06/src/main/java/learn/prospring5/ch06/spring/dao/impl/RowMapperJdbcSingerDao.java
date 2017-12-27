@@ -47,6 +47,11 @@ public class RowMapperJdbcSingerDao implements SingerDao, InitializingBean {
     }
 
     @Override
+    public List<Singer> findAllWithAlbums() {
+        return null;
+    }
+
+    @Override
     public void afterPropertiesSet() throws Exception {
         if (namedParameterJdbcTemplate ==  null) {
             throw new BeanCreationException(

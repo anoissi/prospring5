@@ -21,6 +21,11 @@ public class JdbcSingerDao implements SingerDao, InitializingBean {
         return null;
     }
 
+    @Override
+    public List<Singer> findAllWithAlbums() {
+        return null;
+    }
+
     public void setJdbcTemplate(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
     }

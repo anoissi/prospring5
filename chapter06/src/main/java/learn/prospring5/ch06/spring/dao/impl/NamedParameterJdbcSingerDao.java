@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Map;
 
 public class NamedParameterJdbcSingerDao implements SingerDao, InitializingBean {
-    private NamedParameterJdbcTemplate namedParameterJdbcTemplate;
+    protected NamedParameterJdbcTemplate namedParameterJdbcTemplate;
     @Override
     public String findNameById(Long id) {
         String sql = "SELECT first_name ||' '|| last_name FROM singer WHERE id = :singerId";
@@ -23,6 +23,11 @@ public class NamedParameterJdbcSingerDao implements SingerDao, InitializingBean 
 
     @Override
     public List<Singer> findAll() {
+        return null;
+    }
+
+    @Override
+    public List<Singer> findAllWithAlbums() {
         return null;
     }
 
