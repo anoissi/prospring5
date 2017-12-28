@@ -7,12 +7,18 @@ import org.hibernate.SessionFactory;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import javax.annotation.Resource;
 import java.util.List;
 
 @Transactional
 @Repository("singerDao")
 public class SingerDaoImpl implements SingerDao {
+    private static Logger logger =
+            LoggerFactory.getLogger(SingerDaoImpl.class);
+
     private SessionFactory sessionFactory;
 
     public SessionFactory getSessionFactory() {
@@ -43,5 +49,12 @@ public class SingerDaoImpl implements SingerDao {
         return (Singer) sessionFactory.getCurrentSession().
                 getNamedQuery("Singer.findById").
                 setParameter("id", id).uniqueResult();
+    }
+
+    @Override
+    public Singer save(Singer singer) {
+        sessionFactory.getCurrentSession().saveOrUpdate(singer);
+        logger.info("Singer saved with id: " + singer.getId());
+        return singer;
     }
 }

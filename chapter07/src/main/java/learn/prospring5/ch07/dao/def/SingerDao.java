@@ -13,6 +13,8 @@ public interface SingerDao {
 
     @Transactional(readOnly = true)
     Singer findById(Long id);
+
+    Singer save(Singer singer);
   /*   List<Singer> findAllWithAlbum();
     Singer findById(Long id);
     Singer save(Singer contact);
