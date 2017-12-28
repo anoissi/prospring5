@@ -1,4 +1,3 @@
-DROP FUNCTION getFirstNameById();
 CREATE OR REPLACE FUNCTION getFirstNameById(in_id INT)
 RETURNS VARCHAR(60) AS $firstName$
 declare

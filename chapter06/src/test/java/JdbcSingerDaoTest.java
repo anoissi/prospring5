@@ -13,6 +13,7 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
 
+import static junit.framework.TestCase.assertEquals;
 import static junit.framework.TestCase.assertNotNull;
 import static junit.framework.TestCase.assertTrue;
 
@@ -104,6 +105,19 @@ public class JdbcSingerDaoTest {
         listSingers(singers);
         System.out.println("\n\n\n\n\n");
     }
+
+
+    @Test
+    public void testFindFirstNameById(){
+        testSingerInsert();
+        System.out.println("testFindFirstNameById()");
+        System.out.println("\n\n\n\n\n");
+        String  firstName =  singerDao.findFirstNameById(1L);
+        assertEquals("Ed", firstName);
+        System.out.println("Retrieved value: " +  firstName);
+        System.out.println("\n\n\n\n\n");
+    }
+
     private void listSingers(List<Singer> singers){
         singers.forEach(singer -> {
             System.out.println(singer);

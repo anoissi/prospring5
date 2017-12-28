@@ -1,10 +1,7 @@
 package learn.prospring5.ch06.spring.springJDBCOperations.dao.impl;
 
 import learn.prospring5.ch06.spring.springJDBCOperations.dao.def.SingerDao;
-import learn.prospring5.ch06.spring.springJDBCOperations.dao.impl.queries.InsertSinger;
-import learn.prospring5.ch06.spring.springJDBCOperations.dao.impl.queries.InsertSingerAlbum;
-import learn.prospring5.ch06.spring.springJDBCOperations.dao.impl.queries.SelectAllSingers;
-import learn.prospring5.ch06.spring.springJDBCOperations.dao.impl.queries.SqlUpdateUpdateSinger;
+import learn.prospring5.ch06.spring.springJDBCOperations.dao.impl.queries.*;
 import learn.prospring5.ch06.spring.springJDBCOperations.dao.model.Album;
 import learn.prospring5.ch06.spring.springJDBCOperations.dao.model.Singer;
 import org.slf4j.Logger;
@@ -33,6 +30,7 @@ public class JdbcSingerDao implements SingerDao {
     private SqlUpdateUpdateSinger sqlUpdateUpdateSinger;
     private InsertSinger insertSinger;
     private InsertSingerAlbum insertSingerAlbum;
+    private StoredFunctionFirstNameById storedFunctionFirstNameById;
 
     @Resource(name = "dataSource")
     public void setDataSource(DataSource dataSource) {
@@ -41,6 +39,7 @@ public class JdbcSingerDao implements SingerDao {
         this.sqlUpdateUpdateSinger = new SqlUpdateUpdateSinger(dataSource);
         this.insertSinger = new InsertSinger(dataSource);
         this.insertSinger = new InsertSinger(dataSource);
+        this.storedFunctionFirstNameById = new StoredFunctionFirstNameById(dataSource);
     }
 
     public DataSource getDataSource() {
@@ -69,7 +68,8 @@ public class JdbcSingerDao implements SingerDao {
 
     @Override
     public String findFirstNameById(Long id) {
-        return null;
+        List<String> result = storedFunctionFirstNameById.execute(id);
+        return result.get(0);
     }
 
     @Override
@@ -136,10 +136,15 @@ public class JdbcSingerDao implements SingerDao {
     public void cleanUpDatabaseForTest(){
         String sql1 = "delete  from singer";
         String sql2 = "delete   from album" ;
+        String sql3 = "ALTER SEQUENCE singer_id_seq RESTART WITH 1;";
+        String sql4 = "ALTER SEQUENCE album_id_seq RESTART WITH 1;";
+
       try {
           JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
           jdbcTemplate.update(sql2, new Object[]{});
           jdbcTemplate.update(sql1, new Object[]{});
+          jdbcTemplate.update(sql3, new Object[]{});
+          jdbcTemplate.update(sql4, new Object[]{});
       } catch (Exception e){
           logger.info(" danger !  : error when trying to clean up database");
       }
