@@ -30,4 +30,18 @@ public class SingerDaoImpl implements SingerDao {
         return sessionFactory.getCurrentSession()
                 .createQuery("from Singer s").list();
     }
+
+    @Transactional(readOnly = true)
+    @Override
+    public List<Singer> findAllWithAlbum() {
+        return sessionFactory.getCurrentSession().getNamedQuery("Singer.findAllWithAlbum").list();
+    }
+
+    @Transactional(readOnly = true)
+    @Override
+    public Singer findById(Long id) {
+        return (Singer) sessionFactory.getCurrentSession().
+                getNamedQuery("Singer.findById").
+                setParameter("id", id).uniqueResult();
+    }
 }

@@ -17,26 +17,26 @@
         <artifactId>spring-orm</artifactId>
         <version>5.0.2.RELEASE</version>
     </dependency>
-   <!-- <dependency>
+<!--    <dependency>
         <groupId>org.slf4j</groupId>
         <artifactId>slf4j-jcl</artifactId>
         <version>1.7.25</version>
     </dependency>-->
-  <!--  <dependency>
+    <dependency>
         <groupId>ch.qos.logback</groupId>
         <artifactId>logback-classic</artifactId>
         <version>1.2.3</version>
-    </dependency>-->
+    </dependency>
     <dependency>
         <groupId>com.h2database</groupId>
         <artifactId>h2</artifactId>
         <version>1.4.196</version>
     </dependency>
-    <!--<dependency>
+    <dependency>
         <groupId>org.apache.commons</groupId>
         <artifactId>commons-lang3</artifactId>
         <version>3.7</version>
-    </dependency>-->
+    </dependency>
     <dependency>
         <groupId>org.hibernate</groupId>
         <artifactId>hibernate-entitymanager</artifactId>

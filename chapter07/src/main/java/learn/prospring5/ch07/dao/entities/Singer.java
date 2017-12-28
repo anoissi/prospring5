@@ -11,6 +11,17 @@ import static javax.persistence.GenerationType.IDENTITY;
 
 @Entity
 @Table(name = "singer")
+@NamedQueries({
+        @NamedQuery(name="Singer.findById",
+                query="select distinct s from Singer s " +
+                        "left join fetch s.albums a " +
+                        "left join fetch s.instruments i " +
+                        "where s.id = :id"),
+        @NamedQuery(name="Singer.findAllWithAlbum",
+                query="select distinct s from Singer s " +
+                        "left join fetch s.albums a " +
+                        "left join fetch s.instruments i")
+})
 public class Singer implements Serializable {
 
     private Long id;
