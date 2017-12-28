@@ -1,0 +1,8 @@
+This chapter showed you how to use Spring to simplify JDBC programming. You learned how to connect to a
+database and perform selects, updates, deletes, and inserts, as well as call database stored functions. Using
+the core Spring JDBC class, JdbcTemplate, was discussed in detail. We covered other Spring classes that are
+built on top of JdbcTemplate and that help you model various JDBC operations. We also showed how to
+use the new lambda expressions from Java 8 where appropriate. In addition, Spring Boot JDBC was covered
+because whatever helps you focus more on the implementation of the business logic of an application and
+less on the configurations is a great tool to know. In the next couple of chapters, we discuss how to use
+Spring with popular ORM technologies when developing data access logic.
