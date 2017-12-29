@@ -1,0 +1,18 @@
+In this chapter, we discussed the basic concepts of Hibernate and how to configure it within a Spring
+application. Then we covered common techniques for defining ORM mappings, and we covered
+associations and how to use the HibernateTemplate class to perform various database operations.
+
+ With
+regard to Hibernate, we covered only a small piece of its functionality and features. For those interested
+in using Hibernate with Spring, we highly recommend you study Hibernate’s standard documentation.
+
+
+Also, numerous books discuss Hibernate in detail. We recommend Beginning Hibernate: For Hibernate 5
+by Joseph Ottinger, Jeff Linwood, and Dave Minter (Apress, 2016), 3 as well as Pro JPA 2 by Mike Keith and
+Merrick Schincariol (Apress, 2013).
+
+4 In the next chapter, you will take a look at JPA and how to use it when
+using Spring. Hibernate provides excellent support for JPA, and we will continue to use Hibernate as the
+persistence provider for the examples in the next chapter. For query and update operations, JPA act likes
+Hibernate. In the next chapter, we discuss advanced topics including native and criteria query and how we
+can use Hibernate as well as its JPA support.
