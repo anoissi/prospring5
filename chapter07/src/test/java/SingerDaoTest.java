@@ -4,6 +4,7 @@ import learn.prospring5.ch07.dao.def.SingerDao;
 import learn.prospring5.ch07.dao.entities.Album;
 import learn.prospring5.ch07.dao.entities.Instrument;
 import learn.prospring5.ch07.dao.entities.Singer;
+import learn.prospring5.ch07.utils.CleanUp;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -25,11 +26,13 @@ public class SingerDaoTest {
             LoggerFactory.getLogger(SingerDaoTest.class);
     private GenericApplicationContext ctx;
     private SingerDao singerDao;
+    private CleanUp cleanUp;
 
     @Before
     public void setUp() {
         ctx = new AnnotationConfigApplicationContext(AppConfig.class);
         singerDao = ctx.getBean(SingerDao.class);
+        cleanUp = ctx.getBean(CleanUp.class);
         assertNotNull(singerDao);
     }
     @Test
@@ -55,6 +58,27 @@ public class SingerDaoTest {
         assertEquals(4, singers.size());
         listSingersWithAlbum(singers);
     }
+
+    @Test
+    public void testUpdate(){
+        Singer singer = singerDao.findById(1L);
+        //making sure such singer exists
+        assertNotNull(singer);
+        //making sure we got expected singer
+        assertEquals("Mayer", singer.getLastName());
+        //retrieve the album
+        Album album = singer.getAlbums().stream().filter(
+                a -> a.getTitle().equals("Battle Studies")).findFirst().get();
+        singer.setFirstName("John Clayton");
+        singer.removeAlbum(album);
+        singerDao.save(singer);
+        // test the update
+        List<Singer> singers = singerDao.findAllWithAlbum();
+        System.out.println("*********************************************************************");
+        listSingersWithAlbum(singers);
+        System.out.println("*********************************************************************");
+    }
+
     @Test
     public void testFindAll(){
         List<Singer> singers = singerDao.findAll();
@@ -97,7 +121,8 @@ public class SingerDaoTest {
         }
     }
     @After
-    public void tearDown(){
+    public void tearDown() {
+        cleanUp.destroy();
         ctx.close();
     }
 }
