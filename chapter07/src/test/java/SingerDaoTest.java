@@ -80,6 +80,15 @@ public class SingerDaoTest {
     }
 
     @Test
+    public void testDelete(){
+        Singer singer = singerDao.findById(2l);
+        //making sure such singer exists
+        assertNotNull(singer);
+        singerDao.delete(singer);
+        listSingersWithAlbum(singerDao.findAllWithAlbum());
+    }
+
+    @Test
     public void testFindAll(){
         List<Singer> singers = singerDao.findAll();
         assertEquals(3, singers.size());

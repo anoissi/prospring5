@@ -3,6 +3,7 @@ package learn.prospring5.ch07.dao.impl;
 
 import learn.prospring5.ch07.dao.def.SingerDao;
 import learn.prospring5.ch07.dao.entities.Singer;
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -11,6 +12,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import javax.annotation.Resource;
+import java.lang.reflect.Method;
 import java.util.List;
 
 @Transactional
@@ -56,5 +58,15 @@ public class SingerDaoImpl implements SingerDao {
         sessionFactory.getCurrentSession().saveOrUpdate(singer);
         logger.info("Singer saved with id: " + singer.getId());
         return singer;
+    }
+
+    @Override
+    public void delete(Singer singer) {
+        currentHibSession().delete(singer);
+        logger.info("Singer deleted with id: " + singer.getId());
+    }
+
+    private Session currentHibSession(){
+        return sessionFactory.getCurrentSession();
     }
 }
