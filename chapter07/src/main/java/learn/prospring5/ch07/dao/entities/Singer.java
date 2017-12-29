@@ -22,61 +22,44 @@ import static javax.persistence.GenerationType.IDENTITY;
                         "left join fetch s.albums a " +
                         "left join fetch s.instruments i")
 })
-public class Singer implements Serializable {
+public class Singer extends AbstractEntity {
 
-    private Long id;
-    private String firstName;
-    private String lastName;
-    private Date birthDate;
-    private int version;
-
-
-    private Set<Album> albums = new HashSet<>();
-    private Set<Instrument> instruments = new HashSet<>();
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    @Id
-    @GeneratedValue(strategy = IDENTITY)
-    @Column(name = "ID")
-    public Long getId() {
-        return this.id;
-    }
-
-    @Version
-    @Column(name = "VERSION")
-    public int getVersion() {
-        return version;
-    }
 
     @Column(name = "FIRST_NAME")
-    public String getFirstName() {
-        return this.firstName;
-    }
-
+    private String firstName;
     @Column(name = "LAST_NAME")
-    public String getLastName() {
-        return this.lastName;
-    }
-
+    private String lastName;
     @Temporal(TemporalType.DATE)
     @Column(name = "BIRTH_DATE")
-    public Date getBirthDate() {
-        return birthDate;
-    }
+    private Date birthDate;
 
-    @OneToMany(mappedBy = "singer", cascade=CascadeType.ALL,
-            orphanRemoval=true)
-    public Set<Album> getAlbums() {
-        return albums;
-    }
 
+    @OneToMany(mappedBy = "singer", cascade=CascadeType.ALL, orphanRemoval=true)
+    private Set<Album> albums = new HashSet<>();
     @ManyToMany
     @JoinTable(name = "singer_instrument",
             joinColumns = @JoinColumn(name = "SINGER_ID"),
             inverseJoinColumns = @JoinColumn(name = "INSTRUMENT_ID"))
+    private Set<Instrument> instruments = new HashSet<>();
+
+
+
+    public String getFirstName() {
+        return this.firstName;
+    }
+
+    public String getLastName() {
+        return this.lastName;
+    }
+
+    public Date getBirthDate() {
+        return birthDate;
+    }
+
+    public Set<Album> getAlbums() {
+        return albums;
+    }
+
     public Set<Instrument> getInstruments() {
         return instruments;
     }
@@ -93,9 +76,6 @@ public class Singer implements Serializable {
         this.birthDate = birthDate;
     }
 
-    public void setVersion(int version) {
-        this.version = version;
-    }
     public boolean addAbum(Album album) {
         album.setSinger(this);
         return getAlbums().add(album);

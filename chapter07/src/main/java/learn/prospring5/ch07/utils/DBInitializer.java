@@ -21,7 +21,7 @@ public class DBInitializer {
             LoggerFactory.getLogger(DBInitializer.class);
     @Autowired
     SingerDao singerDao;
-    @PostConstruct
+   /* @PostConstruct
     public void initDB(){
         logger.info("Starting database initialization...");
         Instrument guitar = new Instrument();
@@ -44,5 +44,5 @@ public class DBInitializer {
         singer.addAbum(album2);
         singerDao.save(singer);
         logger.info("Database initialization finished.");
-    }
+    }*/
 }

@@ -1,6 +1,7 @@
 
 import learn.prospring5.ch07.configs.AdvancedConfig;
 //import learn.prospring5.ch07.configs.AppConfig;
+import learn.prospring5.ch07.configs.AppConfig;
 import learn.prospring5.ch07.dao.def.SingerDao;
 import learn.prospring5.ch07.dao.entities.Album;
 import learn.prospring5.ch07.dao.entities.Instrument;
@@ -31,7 +32,7 @@ public class SingerDaoTest {
 
     @Before
     public void setUp() {
-        ctx = new AnnotationConfigApplicationContext(AdvancedConfig.class);
+        ctx = new AnnotationConfigApplicationContext(AppConfig.class);
         singerDao = ctx.getBean(SingerDao.class);
         cleanUp = ctx.getBean(CleanUp.class);
         assertNotNull(singerDao);
