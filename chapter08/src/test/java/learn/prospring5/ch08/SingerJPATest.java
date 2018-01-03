@@ -110,6 +110,12 @@ public class SingerJPATest {
         listSingersWithAlbum(singerService.findAllWithAlbum());
     }
 
+    @Test
+    public void testFindAllByNativeQuery(){
+        List<Singer> singers = singerService.findAllByNativeQuery();
+        assertEquals(3, singers.size());
+        listSingers(singers);
+    }
     @After
     public void tearDown(){
         ctx.close();

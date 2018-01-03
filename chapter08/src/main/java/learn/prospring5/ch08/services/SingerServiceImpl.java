@@ -70,6 +70,6 @@ public class SingerServiceImpl implements SingerService {
     @Transactional(readOnly=true)
     @Override
     public List<Singer> findAllByNativeQuery() {
-        throw new NotImplementedException("findAllByNativeQuery");
+        return em.createNativeQuery(ALL_SINGER_NATIVE_QUERY, Singer.class).getResultList();
     }
 }
