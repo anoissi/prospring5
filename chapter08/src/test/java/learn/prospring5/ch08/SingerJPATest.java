@@ -101,6 +101,15 @@ public class SingerJPATest {
         listSingersWithAlbum(singers);
     }
 
+    @Test
+    public void testDelete(){
+        Singer singer = singerService.findById(2l);
+        //making sure such singer exists
+        assertNotNull(singer);
+        singerService.delete(singer);
+        listSingersWithAlbum(singerService.findAllWithAlbum());
+    }
+
     @After
     public void tearDown(){
         ctx.close();
