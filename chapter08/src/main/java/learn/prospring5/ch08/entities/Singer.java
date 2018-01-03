@@ -125,6 +125,11 @@ public class Singer implements Serializable {
         this.instruments = instruments;
     }
 
+    public boolean addAbum(Album album) {
+        album.setSinger(this);
+        return getAlbums().add(album);
+    }
+
     @Override
     public String toString() {
         return "Singer - Id: " + id + ", First name: " + firstName
