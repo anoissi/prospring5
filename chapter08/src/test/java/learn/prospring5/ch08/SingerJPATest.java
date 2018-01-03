@@ -74,6 +74,15 @@ public class SingerJPATest {
         logger.info(LogUtils.AFTER);
     }
 
+    @Test
+    public void findById(){
+        Singer singer = singerService.findById(1L);
+        assertNotNull(singer);
+        logger.info(LogUtils.BEFORE);
+        logger.info(singer.toString());
+        logger.info(LogUtils.AFTER);
+    }
+
     @After
     public void tearDown(){
         ctx.close();

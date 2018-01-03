@@ -41,7 +41,10 @@ public class SingerServiceImpl implements SingerService {
     @Transactional(readOnly=true)
     @Override
     public Singer findById(Long id) {
-        throw new NotImplementedException("findById");
+        TypedQuery<Singer> query = em.createNamedQuery
+                (Singer.FIND_SINGER_BY_ID, Singer.class);
+        query.setParameter("id", id);
+        return query.getSingleResult();
     }
 
     @Override
