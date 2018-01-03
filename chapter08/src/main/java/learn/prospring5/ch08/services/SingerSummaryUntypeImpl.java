@@ -4,10 +4,10 @@ import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import         javax.persistence.EntityManager;
+import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import         java.util.Iterator;
-import         java.util.List;
+import java.util.Iterator;
+import java.util.List;
 
 @Service("singerSummaryUntype")
 @Repository
@@ -15,9 +15,9 @@ import         java.util.List;
 public class SingerSummaryUntypeImpl {
 
     @PersistenceContext
-    private EntityManager  em;
+    private EntityManager em;
 
-    @Transactional(readOnly =  true)
+    @Transactional(readOnly = true)
     public void displayAllSingerSummary() {
         List result = em.createQuery("select  s.firstName, s.lastName, a.title from Singer s "
                 + "left join s.albums a "

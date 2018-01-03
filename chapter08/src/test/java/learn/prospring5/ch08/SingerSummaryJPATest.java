@@ -30,6 +30,8 @@ public class SingerSummaryJPATest {
         singerSummaryUntype.displayAllSingerSummary();
     }
 
+
+
     @After
     public void tearDown() {
         ctx.close();
