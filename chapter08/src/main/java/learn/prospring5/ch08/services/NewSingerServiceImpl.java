@@ -1,6 +1,7 @@
 package learn.prospring5.ch08.services;
 
 import learn.prospring5.ch08.entities.Singer;
+import learn.prospring5.ch08.repos.SingerRepository;
 import org.apache.commons.lang3.NotImplementedException;
 import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;

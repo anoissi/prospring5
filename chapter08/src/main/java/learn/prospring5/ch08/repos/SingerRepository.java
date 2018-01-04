@@ -1,4 +1,4 @@
-package learn.prospring5.ch08.services;
+package learn.prospring5.ch08.repos;
 
 import java.util.List;
 
