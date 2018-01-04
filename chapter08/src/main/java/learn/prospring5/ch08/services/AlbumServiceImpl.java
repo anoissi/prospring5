@@ -1,0 +1,27 @@
+package learn.prospring5.ch08.services;
+
+
+import learn.prospring5.ch08.entities.Album;
+import learn.prospring5.ch08.entities.Singer;
+import learn.prospring5.ch08.repos.AlbumRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+import java.util.List;
+
+@Service("springJpaAlbumService")
+@Transactional
+public class AlbumServiceImpl  implements AlbumService {
+
+    @Autowired
+    private AlbumRepository albumRepository;
+
+    @Transactional(readOnly=true)
+    @Override public List<Album> findBySinger(Singer singer) {
+        return albumRepository.findBySinger(singer);
+    }
+
+    @Override public  List<Album> findByTitle(String title) {
+        return albumRepository.findByTitle(title);
+    }
+}
