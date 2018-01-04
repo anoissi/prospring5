@@ -1,0 +1,10 @@
+In this chapter, we covered the basic concepts of JPA and how to configure JPA’s EntityManagerFactory in
+Spring by using Hibernate as the persistence service provider. Then we discussed using JPA to perform basic
+database operations. Advanced topics included native queries and the strongly typed JPA Criteria API.
+Additionally, we demonstrated how Spring Data JPA’s Repository abstraction can help simplify JPA
+application development, as well as how to use its entity listener to keep track of basic auditing information
+for entity classes. For full versioning of entity classes, using Hibernate Envers to fulfill the requirement was
+also covered.
+Spring Boot for JPA applications was also covered, as it simplifies configuration a lot and keeps the focus
+on developing the required functionality.
+In the next chapter, we discuss transaction management in Spring.
