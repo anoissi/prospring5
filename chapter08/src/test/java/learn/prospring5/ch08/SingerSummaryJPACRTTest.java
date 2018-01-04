@@ -23,7 +23,7 @@ public class SingerSummaryJPACRTTest {
 
     @Before
     public void setUp() {
-        ctx = new GenericXmlApplicationContext("app-context-annotation.xml");
+        ctx = new GenericXmlApplicationContext("app-context-springjpa.xml");
         singerSummaryService = ctx.getBean(SingerSummaryService.class);
         assertNotNull(singerSummaryService);
     }

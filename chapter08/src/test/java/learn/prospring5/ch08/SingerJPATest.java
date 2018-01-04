@@ -28,8 +28,8 @@ public class SingerJPATest {
 
     @Before
     public void setUp(){
-        ctx = new GenericXmlApplicationContext("app-context-annotation.xml");
-        singerService = ctx.getBean(SingerService.class);
+        ctx = new GenericXmlApplicationContext("app-context-springjpa.xml");
+        singerService = (SingerService) ctx.getBean("jpaSingerService");
         assertNotNull(singerService);
     }
     @Test

@@ -3,6 +3,7 @@ package learn.prospring5.ch08.services;
 import learn.prospring5.ch08.entities.Singer;
 
 import learn.prospring5.ch08.entities.Singer_;
+import org.apache.commons.lang3.NotImplementedException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -100,5 +101,15 @@ public class SingerServiceImpl implements SingerService {
         }
         criteriaQuery.where(criteria);
         return em.createQuery(criteriaQuery).getResultList();
+    }
+
+    @Override
+    public List<Singer> findByFirstName(String firstName) {
+        throw new NotImplementedException("findByFirstName");
+    }
+
+    @Override
+    public List<Singer> findByFirstNameAndLastName(String firstName, String lastName) {
+        throw new NotImplementedException("findByFirstNameAndLastName");
     }
 }
