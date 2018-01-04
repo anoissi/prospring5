@@ -116,6 +116,12 @@ public class SingerJPATest {
         assertEquals(3, singers.size());
         listSingers(singers);
     }
+    @Test
+    public void tesFindByCriteriaQuery(){
+        List<Singer> singers = singerService.findByCriteriaQuery("John", "Mayer");
+        assertEquals(1, singers.size());
+        listSingersWithAlbum(singers);
+    }
     @After
     public void tearDown(){
         ctx.close();

@@ -72,7 +72,6 @@
             <artifactId>querydsl-apt</artifactId>
             <version>3.7.4</version>
         </dependency>
-
     </dependencies>
 
 </project>
