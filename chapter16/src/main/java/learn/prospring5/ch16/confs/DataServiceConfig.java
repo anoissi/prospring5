@@ -19,8 +19,8 @@ import javax.sql.DataSource;
 import java.util.Properties;
 
 @Configuration
-@EnableJpaRepositories(basePackages = {"com.apress.prospring5.ch16.repos"})
-@ComponentScan(basePackages = {"com.apress.prospring5.ch16"})
+@EnableJpaRepositories(basePackages = {"learn.prospring5.ch16.repos"})
+@ComponentScan(basePackages = {"learn.prospring5.ch16"})
 public class DataServiceConfig {
     private static Logger logger = LoggerFactory.getLogger(DataServiceConfig.class);
 
@@ -45,6 +45,7 @@ public class DataServiceConfig {
         hibernateProp.put("hibernate.max_fetch_depth", 3);
         hibernateProp.put("hibernate.jdbc.batch_size", 10);
         hibernateProp.put("hibernate.jdbc.fetch_size", 50);
+        hibernateProp.put("hibernate.format_sql",true);
         return hibernateProp;
     }
 
@@ -62,7 +63,7 @@ public class DataServiceConfig {
     public EntityManagerFactory entityManagerFactory() {
         LocalContainerEntityManagerFactoryBean factoryBean =
                 new LocalContainerEntityManagerFactoryBean();
-        factoryBean.setPackagesToScan("com.apress.prospring5.ch16.entities");
+        factoryBean.setPackagesToScan("learn.prospring5.ch16.entities");
         factoryBean.setDataSource(dataSource());
         factoryBean.setJpaVendorAdapter(new HibernateJpaVendorAdapter());
         factoryBean.setJpaProperties(hibernateProperties());
