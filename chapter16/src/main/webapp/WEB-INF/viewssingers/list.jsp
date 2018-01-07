@@ -13,6 +13,9 @@
 <html>
 <head>
 <title>Singers list</title>
+ <spring:theme code="styleSheet"  var="app_css" />
+  <spring:url value="/${app_css}" var="app_css_url" />
+  <link rel="stylesheet" type="text/css" media="screen" href="${app_css_url}" />
 </head>
 <body>
 	<div>
