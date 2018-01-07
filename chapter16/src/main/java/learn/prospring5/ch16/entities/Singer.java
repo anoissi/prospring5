@@ -2,8 +2,6 @@ package learn.prospring5.ch16.entities;
 
 
 import javax.persistence.*;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -21,12 +19,8 @@ public class Singer implements Serializable {
     @Version
     @Column(name = "VERSION")
     private int version;
-    @NotEmpty(message = "{validation.firstname.NotEmpty.message}")
-    @Size(min = 3, max = 60, message = "{validation.firstname.Size.message}")
     @Column(name = "FIRST_NAME")
     private String firstName;
-    @NotEmpty(message = "{validation.lastname.NotEmpty.message}")
-    @Size(min = 1, max = 40, message = "{validation.lastname.Size.message}")
     @Column(name = "LAST_NAME")
     private String lastName;
     @Temporal(TemporalType.DATE)
@@ -37,7 +31,7 @@ public class Singer implements Serializable {
     @Basic(fetch = FetchType.LAZY)
     @Lob
     @Column(name = "PHOTO")
-    private byte photo;
+    private byte[] photo;
 
     public Long getId() {
         return id;
@@ -87,11 +81,11 @@ public class Singer implements Serializable {
         this.description = description;
     }
 
-    public byte getPhoto() {
+    public byte[] getPhoto() {
         return photo;
     }
 
-    public void setPhoto(byte photo) {
+    public void setPhoto(byte[] photo) {
         this.photo = photo;
     }
 
