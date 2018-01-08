@@ -76,6 +76,31 @@ public class SingerController {
         return "singers/update";
     }
 
+    @RequestMapping(method  =  RequestMethod.POST)
+    public  String  create(@Valid Singer singer,  BindingResult bindingResult,
+                           Model   uiModel, HttpServletRequest httpServletRequest,
+                           RedirectAttributes redirectAttributes,Locale locale) {
+        logger.info("Creating singer");
+        if (bindingResult.hasErrors()) {
+            uiModel.addAttribute("message", new Message("error", messageSource.getMessage("singer_save_fail", new Object[]{}, locale)));
+            uiModel.addAttribute("singer", singer);
+            return "singers/create";
+        }
+        uiModel.asMap().clear();
+        redirectAttributes.addFlashAttribute("message", new Message("success",
+                messageSource.getMessage("singer_save_success", new Object[]{}, locale)));
+        logger.info("Singer id:  " +  singer.getId());
+        singerService.save(singer);
+        return "redirect:/singers/";
+    }
+
+    @RequestMapping(params = "form", method = RequestMethod.GET)
+    public String createForm(Model uiModel) {
+        Singer singer =  new Singer();
+        uiModel.addAttribute("singer", singer);
+        return "singers/create";
+    }
+
     @Autowired
     public void setSingerService(SingerService singerService) {
         this.singerService = singerService;

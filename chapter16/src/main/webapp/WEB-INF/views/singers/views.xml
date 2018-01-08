@@ -4,12 +4,15 @@
         "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
 <tiles-definitions>
     <definition extends="default" name="singers/list">
-        <put-attribute name="body" value="/WEB-INF/views/singers/list.jspx" />
+        <put-attribute name="body" value="/WEB-INF/views/singers/list.jspx"/>
     </definition>
     <definition extends="default" name="singers/show">
-        <put-attribute name="body" value="/WEB-INF/views/singers/show.jspx" />
+        <put-attribute name="body" value="/WEB-INF/views/singers/show.jspx"/>
     </definition>
-    <definition extends="default"  name="singers/update">
-        <put-attribute name="body" value="/WEB-INF/views/singers/edit.jspx" />
+    <definition extends="default" name="singers/update">
+        <put-attribute name="body" value="/WEB-INF/views/singers/edit.jspx"/>
+    </definition>
+    <definition extends="default" name="singers/create">
+        <put-attribute name="body" value="/WEB-INF/views/singers/edit.jspx"/>
     </definition>
 </tiles-definitions>
