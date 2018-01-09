@@ -22,6 +22,12 @@
         <script src="${jquery_ui_url}" type="text/javascript">
             <jsp:text />
         </script>
+        <!-- CKEditor -->
+        <spring:url value="/resources/ckeditor/ckeditor.js" var="ckeditor_url" />
+        <spring:url  value="/resources/ckeditor/adapters/jquery.js"
+                     var="ckeditor_jquery_url" />
+        <script type="text/javascript" src="${ckeditor_url}"><jsp:text/></script>
+        <script type="text/javascript"  src="${ckeditor_jquery_url}"><jsp:text/></script>
         <!-- Get  the user locale  from the page  context
         (it was  set by  Spring MVC's  locale resolver) -->
         <c:set  var="userLocale">
