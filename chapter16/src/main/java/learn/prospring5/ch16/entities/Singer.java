@@ -2,6 +2,7 @@ package learn.prospring5.ch16.entities;
 
 
 import javax.persistence.*;
+import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -19,8 +20,10 @@ public class Singer implements Serializable {
     @Version
     @Column(name = "VERSION")
     private int version;
+    @Size(min=2, max=60,   message="{validation.firstname.Size.message}")
     @Column(name = "FIRST_NAME")
     private String firstName;
+    @Size(min=2, max=60,   message="{validation.lastname.Size.message}")
     @Column(name = "LAST_NAME")
     private String lastName;
     @Temporal(TemporalType.DATE)
