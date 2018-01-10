@@ -7,8 +7,6 @@ import org.springframework.security.config.annotation.method.configuration.Enabl
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.web.csrf.CsrfTokenRepository;
-import org.springframework.security.web.csrf.HttpSessionCsrfTokenRepository;
 
 @Configuration
 @EnableWebSecurity
@@ -18,7 +16,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) {
         try {
-            auth.inMemoryAuthentication().withUser("user").password("user").roles("USER");
+            auth.inMemoryAuthentication().withUser("user").password("{noop}user").roles("USER");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -44,14 +42,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .logoutSuccessUrl("/singers")
                 .and()
                 .csrf().disable();
-        //csrfTokenRepository(repo());
     }
 
-    //@Bean
-    public CsrfTokenRepository repo() {
-        HttpSessionCsrfTokenRepository repo = new HttpSessionCsrfTokenRepository();
-        repo.setParameterName("_csrf");
-        repo.setHeaderName("X-CSRF-TOKEN");
-        return repo;
-    }
 }
